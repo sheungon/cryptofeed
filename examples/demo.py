@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2017-2023 Bryant Moscon - bmoscon@gmail.com
+Copyright (C) 2017-2025 Bryant Moscon - bmoscon@gmail.com
 
 Please see the LICENSE file for the terms and conditions
 associated with this software.
@@ -8,7 +8,7 @@ from decimal import Decimal
 
 from cryptofeed import FeedHandler
 from cryptofeed.defines import CANDLES, BID, ASK, BLOCKCHAIN, FUNDING, GEMINI, L2_BOOK, L3_BOOK, LIQUIDATIONS, OPEN_INTEREST, PERPETUAL, TICKER, TRADES, INDEX
-from cryptofeed.exchanges import (Binance, BinanceUS, BinanceFutures, Bitfinex, Bitflyer, AscendEX, Bitmex, Bitstamp, Bittrex, Coinbase, Gateio,
+from cryptofeed.exchanges import (Binance, BinanceUS, BinanceFutures, Bitfinex, Bitflyer, AscendEX, Bitmex, Bitstamp, Coinbase, Gateio,
                                   HitBTC, Huobi, HuobiDM, HuobiSwap, Kraken, OKCoin, OKX, Poloniex, Bybit, KuCoin, Bequant, Upbit, Probit)
 from cryptofeed.exchanges.bitdotcom import BitDotCom
 from cryptofeed.exchanges.bitget import Bitget
@@ -94,7 +94,6 @@ def main():
     f.add_feed(Bithumb(symbols=['BTC-KRW'], channels=[TRADES], callbacks={TRADES: trade}))
     f.add_feed(Bitmex(timeout=5000, symbols=Bitmex.symbols(), channels=[LIQUIDATIONS], callbacks={LIQUIDATIONS: liquidations, OPEN_INTEREST: oi, FUNDING: funding}))
     f.add_feed(Bitstamp(channels=[L2_BOOK, TRADES], symbols=['BTC-USD'], callbacks={L2_BOOK: book, TRADES: trade}))
-    f.add_feed(Bittrex(subscription={L2_BOOK: ['BTC-USDT'], CANDLES: ['BTC-USDT', 'ETH-USDT'], TRADES: ['ETH-USDT', 'BTC-USDT'], TICKER: ['ETH-USDT']}, callbacks={CANDLES: candle_callback, L2_BOOK: book, TICKER: ticker, TRADES: trade}))
     f.add_feed(BLOCKCHAIN, subscription={L2_BOOK: ['BTC-USD'], TRADES: Blockchain.symbols()}, callbacks={L2_BOOK: book, TRADES: trade})
     f.add_feed(Bybit(symbols=['BTC-USDT-PERP', 'BTC-USD-PERP'], channels=[INDEX, FUNDING, OPEN_INTEREST], callbacks={OPEN_INTEREST: oi, INDEX: index, FUNDING: funding}))
     f.add_feed(Bybit(candle_closed_only=True, symbols=['BTC-USDT-PERP', 'BTC-USD-PERP'], channels=[CANDLES, TRADES, L2_BOOK], callbacks={CANDLES: candle_callback, TRADES: trade, L2_BOOK: book}))
@@ -107,7 +106,7 @@ def main():
     f.add_feed(HitBTC(channels=[TRADES], symbols=['BTC-USDT'], callbacks={TRADES: trade}))
     f.add_feed(Huobi(symbols=['BTC-USDT'], channels=[CANDLES, TRADES, L2_BOOK], callbacks={TRADES: trade, L2_BOOK: book, CANDLES: candle_callback}))
     f.add_feed(HuobiDM(subscription={L2_BOOK: HuobiDM.symbols()[:2], TRADES: HuobiDM.symbols()[:10]}, callbacks={TRADES: trade, L2_BOOK: book}))
-    pairs = ['BTC-USD-PERP', 'ETH-USD-PERP', 'EOS-USD-PERP', 'BCH-USD-PERP', 'BSV-USD-PERP', 'LTC-USD-PERP']
+    pairs = ['BTC-USD-PERP', 'ETH-USD-PERP', 'LTC-USD-PERP']
     f.add_feed(HuobiSwap(symbols=pairs, channels=[TRADES, L2_BOOK, FUNDING], callbacks={FUNDING: funding, TRADES: trade, L2_BOOK: book}))
     f.add_feed(KrakenFutures(symbols=KrakenFutures.symbols(), channels=[L2_BOOK, TICKER, TRADES, OPEN_INTEREST, FUNDING], callbacks={L2_BOOK: book, FUNDING: funding, OPEN_INTEREST: oi, TRADES: trade, TICKER: ticker}))
     f.add_feed(Kraken(config='config.yaml', checksum_validation=True, subscription={L2_BOOK: ['BTC-USD'], TRADES: ['BTC-USD'], CANDLES: ['BTC-USD'], TICKER: ['ETH-USD']}, callbacks={L2_BOOK: book, CANDLES: candle_callback, TRADES: trade, TICKER: ticker}))

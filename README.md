@@ -14,7 +14,6 @@ Handles multiple cryptocurrency exchange data feeds and returns normalized and s
 * [bitFlyer](https://bitflyer.com/)
 * [Bithumb](https://en.bithumb.com/)
 * [Bitstamp](https://www.bitstamp.net/)
-* [Bittrex](https://global.bittrex.com/)
 * [Blockchain.com](https://www.blockchain.com/)
 * [Bybit](https://www.bybit.com/)
 * [Binance](https://www.binance.com/en)
@@ -141,6 +140,7 @@ Supported Backends:
 * Kafka
 * RabbitMQ
 * PostgreSQL
+* [QuasarDB](https://quasar.ai/)
 * GCP Pub/Sub
 * [QuestDB](https://questdb.io/)
 
@@ -176,7 +176,7 @@ Cryptofeed supports some REST interfaces for retrieving real-time and historical
 
 ## Future Work
 
-There are a lot of planned features, new exchanges, etc planned! If you'd like to discuss ongoing development, please join the [slack](https://join.slack.com/t/cryptofeed-dev/shared_invite/enQtNjY4ODIwODA1MzQ3LTIzMzY3Y2YxMGVhNmQ4YzFhYTc3ODU1MjQ5MDdmY2QyZjdhMGU5ZDFhZDlmMmYzOTUzOTdkYTZiOGUwNGIzYTk) or open a thread in the [discussions](https://github.com/bmoscon/cryptofeed/discussions) in GitHub.
+There are a lot of planned features, new exchanges, etc planned! If you'd like to discuss ongoing development, please join the [discord](https://discord.gg/zaBYaGAYfR) or open a thread in the [discussions](https://github.com/bmoscon/cryptofeed/discussions) in GitHub.
 
 ## Contributing
 

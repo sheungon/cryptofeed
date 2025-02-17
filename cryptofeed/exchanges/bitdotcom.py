@@ -5,7 +5,7 @@ import itertools
 import logging
 from decimal import Decimal
 import time
-from typing import Dict, List, Tuple, Union
+from typing import Dict, Tuple
 from collections import defaultdict
 import hashlib
 import hmac
@@ -32,7 +32,7 @@ class BitDotCom(Feed):
     ]
     rest_endpoints = [
         RestEndpoint('https://spot-api.bit.com', instrument_filter=('TYPE', (SPOT,)), sandbox='https://betaspot-api.bitexch.dev', routes=Routes('/spot/v1/instruments', authentication='/spot/v1/ws/auth')),
-        RestEndpoint('https://api.bit.com', instrument_filter=('TYPE', (OPTION, FUTURES, PERPETUAL)), sandbox='https://betaapi.bitexch.dev', routes=Routes('/v1/instruments?currency={}&active=true', currencies='/v1/currencies', authentication='/v1/ws/auth'))
+        RestEndpoint('https://api.bit.com', instrument_filter=('TYPE', (OPTION, FUTURES, PERPETUAL)), sandbox='https://betaapi.bitexch.dev', routes=Routes('/linear/v1/instruments?currency={}&active=true', currencies=True, authentication='/v1/ws/auth'))
     ]
 
     websocket_channels = {
@@ -51,10 +51,9 @@ class BitDotCom(Feed):
         self._sequence_no = defaultdict(int)
 
     @classmethod
-    def _symbol_endpoint_prepare(cls, ep: RestEndpoint) -> Union[List[str], str]:
+    def _symbol_endpoint_prepare(cls, ep: RestEndpoint) -> str:
         if ep.routes.currencies:
-            ret = cls.http_sync.read(ep.route('currencies'), json=True, uuid=cls.id)
-            return [ep.route('instruments').format(currency) for currency in ret['data']['currencies']]
+            return ep.route('instruments').format('USDT')
         return ep.route('instruments')
 
     @classmethod

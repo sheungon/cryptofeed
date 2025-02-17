@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2017-2023 Bryant Moscon - bmoscon@gmail.com
+Copyright (C) 2017-2025 Bryant Moscon - bmoscon@gmail.com
 
 Please see the LICENSE file for the terms and conditions
 associated with this software.
@@ -58,7 +58,7 @@ class Bitmex(Feed, BitmexRestMixin):
             else:
                 LOG.info('Unsupported type %s for instrument %s', entry['typ'], entry['symbol'])
 
-            s = Symbol(base, quote, type=stype, expiry_date=entry['expiry'])
+            s = Symbol(base, quote, type=stype, expiry_date=entry.get('expiry'))
             if s.normalized not in ret:
                 ret[s.normalized] = entry['symbol']
                 info['tick_size'][s.normalized] = entry['tickSize']

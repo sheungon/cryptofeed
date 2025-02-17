@@ -14,3 +14,8 @@ Cryptofeed was originally created by Bryant Moscon, but many others have contrib
 * [O. Janche](https://github.com/toyan) - <toyan@yandex.ru>
 * [Bastien Enjalbert](https://github.com/bastienjalbert) - <bastienjalbert@gmail.com>
 * [Jonggyun Kim](https://github.com/gyunt) - <truth0233@gmail.com>
+* [QuasarDB](https://quasar.ai/)
+* [Thomas Bouamoud](https://github.com/thomasbs17) - <thomasbs17@yahoo.fr>
+* [Carlo Eugster](https://github.com/carloe) - <carlo@relaun.ch>
+* [Marten Schlüter](https://github.com/maschlr)
+* [Handel Scholze](https://github.com/HandelSM) - <handel.scholze@gmail.com>

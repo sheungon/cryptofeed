@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2017-2023 Bryant Moscon - bmoscon@gmail.com
+Copyright (C) 2017-2025 Bryant Moscon - bmoscon@gmail.com
 
 Please see the LICENSE file for the terms and conditions
 associated with this software.
@@ -43,7 +43,7 @@ CHECKSUM = 131072
 class Bitfinex(Feed, BitfinexRestMixin):
     id = BITFINEX
 
-    websocket_endpoints = [WebsocketEndpoint('wss://api.bitfinex.com/ws/2', limit=25)]
+    websocket_endpoints = [WebsocketEndpoint('wss://api-pub.bitfinex.com/ws/2', limit=20)]
     rest_endpoints = [RestEndpoint('https://api-pub.bitfinex.com', routes=Routes(['/v2/conf/pub:list:pair:exchange', '/v2/conf/pub:list:currency', '/v2/conf/pub:list:pair:futures']))]
     websocket_channels = {
         L3_BOOK: 'book-R0-{}-{}',
